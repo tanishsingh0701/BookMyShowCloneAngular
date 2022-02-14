@@ -1,0 +1,64 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <a routerLink="/" class="navbar-brand">BookMyShow</a> -->
+      <img
+      src="https://www.thehindubusinessline.com/news/variety/d7dyzq/article31960056.ece/ALTERNATES/LANDSCAPE_615/bl02bookmyshow"
+      alt="bookmyshow"
+      class="img-responsive"
+      style="max-height: 80px;">
+    
+    </div>
+
+   
+
+    <div class="collapse navbar-collapse" style="background-color:rgb(red, green, blue);">
+      
+      <ul class="nav navbar-nav navbar-right"style="margin-top: 20px;font-size: medium;">
+        
+        <!-- <li class="dropdown" appDropdown *ngIf="isAuthenticated"> -->
+          <li class="dropdown" appDropdown>
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button"
+            >Manage <span class="caret"></span
+          ></a>
+          <ul class="dropdown-menu">
+            <li>
+              <!-- <a style="cursor: pointer;" (click)="onSaveData()">Save Data</a> -->
+              <a style="cursor: pointer;">Save Data</a>
+            </li>
+            <li>
+              <!-- <a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a> -->
+              <a style="cursor: pointer;">Fetch Data</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" style="margin-top: 20px;font-size: medium;">
+        <!-- <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/recipes">Recipes</a>
+        </li> -->
+      <li class="new rounded-top" routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a routerLink="/auth" style="border-style:none ;
+        font-size: larger;
+        margin-top: 6px;
+        color: blanchedalmond;
+          border-width : 1px 1px 1px 1px;
+          text-decoration :wavy;
+          background-color:#DC143C;
+          padding : 10px;
+          border-radius: 10px;">SignIn</a>
+        </li>
+
+        <li *ngIf="isAuthenticated">
+          <!-- <li> -->
+          <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+          <!-- <a style="cursor: pointer;">Logout</a> -->
+        </li>
+        <!-- <li routerLinkActive="active">
+          <a routerLink="/shopping-list">Shopping List</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

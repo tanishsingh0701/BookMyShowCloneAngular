@@ -1,0 +1,21 @@
+<div>
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ movie.name }}</h4>
+    <p class="list-group-item-text">{{ movie.description }}</p>
+  </div>
+  <span class="pull-right">
+        <img
+          [src]="movie.image_url"
+          alt="{{ movie.name }}"
+          class="img-responsive"
+          style="height: 20vh;width: 15vw;">
+      </span>
+</a>
+<br>
+</div>
+
