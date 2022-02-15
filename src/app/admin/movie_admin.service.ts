@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -25,7 +26,7 @@ export class MovieService {
   // ];
   private movies: Movie[] = [];
 
-  // constructor(private dataStorage:DataStorageService) {}
+  constructor(private http: HttpClient) {}
 
   setMovies(movies: Movie[]) {
     this.movies = movies;
@@ -54,10 +55,17 @@ export class MovieService {
   }
 
   deleteMovie(index: number) {
-    // var movieId=this.movies[index].id;
+    var movieId=this.movies[index].id;
     // console.log("movie Id"+movieId)
+
     this.movies.splice(index, 1);
     this.moviesChanged.next(this.movies.slice());
+
+    return this.http
+    .delete<any>(
+      'https://localhost:44355/api/Events/'+movieId,
+    )
+    
     // this.dataStorage.deleteMovies(movieId);
     
     

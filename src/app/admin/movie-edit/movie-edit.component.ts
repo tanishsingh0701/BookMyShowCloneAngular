@@ -66,9 +66,20 @@ export class MovieEditComponent implements OnInit {
     let movieName = '';
     let movieImagePath = '';
     let movieDescription = '';
+    let movieImageUrl = '';
+    let movieArtist = '';
+    let movieGenre = '';
+    let moviePrice = '';
+    let movieTotalSeats = '';
+    let movieTrailorUrl = '';
+    let movieDuration = '';
+    let movieLanguage = '';
+    let movieCity = '';
+    
     // let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
+      const movieId=this.movieService.getMovieId(this.id);
       const movie = this.movieService.getMovie(this.id);
       movieName = movie.name;
       movieImagePath = movie.image_url;

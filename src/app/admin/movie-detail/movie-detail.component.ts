@@ -48,9 +48,9 @@ export class MovieDetailComponent implements OnInit {
 
     // console.log("index is "+this.id);
 
-    this.movie_id=this.movieService.getMovieId(this.id);
+    // this.movie_id=this.movieService.getMovieId(this.id);
     // this.dataStorageService.deleteMovies(this.movie_id)
-    this.movieService.deleteMovie(this.id);
+    this.movieService.deleteMovie(this.id).subscribe();
     this.router.navigate(['/movie']);
   }
 
