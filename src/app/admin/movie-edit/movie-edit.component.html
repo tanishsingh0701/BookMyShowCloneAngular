@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-xs-12">
-    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
           <button
             type="submit"
             class="btn btn-success"
-            [disabled]="!recipeForm.valid">Save</button>
+            [disabled]="!movieForm.valid">Save</button> | 
           <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="margin-top: 10px;">
         <div class="col-xs-12">
           <div class="form-group">
             <label for="name">Movie Name</label>
@@ -65,11 +65,11 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="price">Ticket Price</label>
+            <label for="ticket_price">Ticket Price</label>
             <input
-              type="text"
-              id="price"
-              formControlName="price"
+              type="number"
+              id="ticket_price"
+              formControlName="ticket_price"
               class="form-control">
           </div>
         </div>
@@ -91,11 +91,11 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="total_seats">Total Seats</label>
+            <label for="unreserved_seats">Total Seats</label>
             <input
-              type="text"
-              id="total_seats"
-              formControlName="total_seats"
+              type="number"
+              id="unreserved_seats"
+              formControlName="unreserved_seats"
               class="form-control">
           </div>
         </div>
@@ -130,11 +130,11 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="imagePath">Image URL</label>
+            <label for="image_url">Image URL</label>
             <input
               type="text"
-              id="imagePath"
-              formControlName="imagePath"
+              id="image_url"
+              formControlName="image_url"
               class="form-control"
               #imagePath>
           </div>

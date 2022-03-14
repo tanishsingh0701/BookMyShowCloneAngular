@@ -1,8 +1,16 @@
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-4">
     <app-movie-list></app-movie-list>
   </div>
-  <div class="col-md-5">
-    <router-outlet></router-outlet>
+  
+  <div class="col-md-8" >
+
+    <!-- <div class="EarningDiv pull-right"  *ngIf="user_type=='Admin'">
+    <h4><span style="font-weight: bold;">Total Earning(Rs) => </span> {{totalEarning}}</h4>
+  </div> -->
+    
+    <mat-card  fxFlex="85" class="pull-left" style="margin-top: 10vh;margin-left: 10px;">
+    <router-outlet style="margin-top: 20px;"></router-outlet>
+  </mat-card>
   </div>
 </div>

@@ -1,0 +1,28 @@
+<div class="row">
+
+  <div class="col-xs-8">
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">Reservation Id: {{ reservation.id}}</h4>
+    <h4 class="list-group-item-heading">Reservation Time: {{ reservation.reservationTime }}</h4>
+    <h4 class="list-group-item-heading">Customer Name: {{ reservation.customerName }}</h4>
+    <h4 class="list-group-item-heading">Movie Name: {{ reservation.eventName }}</h4>
+    <h4 class="list-group-item-heading">Seats Booked: {{ reservation.quantity }}</h4>
+    <!-- <p class="list-group-item-text">{{ movie.description }}</p> -->
+  </div>
+  <!-- <span class="pull-right">
+        <img
+          [src]="movie.image_url"
+          alt="{{ movie.name }}"
+          class="img-responsive"
+          style="height: 20vh;width: 15vw;">
+      </span> -->
+</a>
+</div>
+
+</div>
+<br>

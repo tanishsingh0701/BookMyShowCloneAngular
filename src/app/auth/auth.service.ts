@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError, BehaviorSubject } from 'rxjs';
+import { throwError, BehaviorSubject, Subject } from 'rxjs';
 
 import { User } from './user.model';
 
@@ -19,11 +19,15 @@ export interface AuthResponseData {
 export interface AuthResponseDataSignup {
   email: string;
   password: string;
+  
 }
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   user = new BehaviorSubject<User>(null);
+  userdetails=new BehaviorSubject<string>('');
+  loginSuccess=new Subject<boolean>();
+  
   private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -59,12 +63,15 @@ export class AuthService {
       .pipe(
         // catchError(this.handleError),
         tap(resData => {
+          this.userdetails.next(resData.user_type);
+          
           this.handleAuthentication(
             resData.access_token,
             resData.token_type,
             resData.expires_in,
             resData.user_id,
-            resData.expiration_Time
+            resData.expiration_Time,
+            resData.user_type
           );
         })
       );
@@ -77,6 +84,7 @@ export class AuthService {
       expires_in: number;
       user_id: string;
       expiration_time:string;
+      user_type:string;
     } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
@@ -87,7 +95,8 @@ export class AuthService {
       userData.token_type,
       userData.expires_in,
       userData.user_id,
-      new Date(userData.expiration_time)
+      new Date(userData.expiration_time),
+      userData.user_type
     );
 
     if (loadedUser.access_token) {
@@ -120,11 +129,12 @@ export class AuthService {
     token_type:string,
     expiresIn: number,
     user_id: string,
-    expiration_Time:Date
+    expiration_Time:Date,
+    user_type:string
    
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(access_token,token_type,expiresIn,user_id,expiration_Time);
+    const user = new User(access_token,token_type,expiresIn,user_id,expiration_Time,user_type);
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));

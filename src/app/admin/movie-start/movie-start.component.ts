@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from '../movie.model';
+import { MovieService } from '../movie_admin.service';
 
 @Component({
   selector: 'app-movie-start',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieStartComponent implements OnInit {
 
-  constructor() { }
+  movies: Movie[];
+  moviesAvailable:boolean=true;
+  constructor(private movieService:MovieService) { }
 
   ngOnInit() {
+    this.movieService.moviesChanged.subscribe(res=>
+      {
+        this.movies=res;
+
+        if(this.movies.length>0)
+        {
+          this.moviesAvailable=true;
+
+        }
+        else
+        {
+          this.moviesAvailable=false;
+
+        }
+      })
   }
 
 }

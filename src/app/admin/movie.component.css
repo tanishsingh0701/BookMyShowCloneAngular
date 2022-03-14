@@ -1,0 +1,15 @@
+.between {
+    border: 3px dotted #0099CC;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.EarningDiv
+{
+    background-color: lightgrey;
+    border: 5px solid green;
+    padding: 5px;
+    width:25vw;
+    height: 10vh;
+    
+}

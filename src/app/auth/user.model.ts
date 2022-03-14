@@ -5,7 +5,8 @@ export class User {
     public token_type: string,
     private expires_in: number,
     private user_id:string,
-    private expiration_Time: Date
+    private expiration_Time: Date,
+    public user_type:string
   ) {}
 
   get token() {

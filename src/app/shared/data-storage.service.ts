@@ -5,6 +5,7 @@ import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { Movie } from '../admin/movie.model';
 import { MovieService } from '../admin/movie_admin.service';
 import { AuthService } from '../auth/auth.service';
+import { Reservation } from '../admin/reservation.model';
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
@@ -42,6 +43,26 @@ export class DataStorageService {
         }),
         tap(movies => {
           this.movieService.setMovies(movies);
+        })
+      );
+  }
+
+  fetchReservation() {
+    return this.http
+      .get<Reservation[]>(
+        'https://localhost:44355/api/Reservation',
+      )
+      .pipe(
+        map(reservations => {
+          return reservations.map(reservation => {
+            return {
+              ...reservation,
+             
+            };
+          });
+        }),
+        tap(reservations => {
+          this.movieService.setReservation(reservations);
         })
       );
   }

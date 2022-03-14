@@ -1,0 +1,54 @@
+ #active{
+    background-color: rgb(255, 51, 0) !important;
+    border-radius: 50px;
+}
+
+.spacer
+{
+    flex: 1 1 auto;
+}
+
+.spacer2
+{
+    flex: 0.03 0.03 auto;
+}
+
+.spacer3
+{
+    flex: 0.6 0.6 auto;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 8px 0 #af00ff;
+  border-color: #99dddd;
+  
+  padding-left: 10px;
+  padding-right: 5px;
+  border-radius: 25px;
+  text-align:justify;
+  font-family:'Times New Roman', Times, serif;
+  height: 35px;
+}
+
+
+/*ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+li {float: left;}
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  } */
+
+
+
+
+  

@@ -1,0 +1,30 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+
+.NameDiv
+{
+    background-color: lightgrey;
+    border: 2px solid green;
+    padding: 2px;
+    width: 10vw;
+    margin-left: 10px;
+    text-align: center;
+    margin-right: 10px;
+    border-radius: 10px;
+    
+    
+}
+
+.list-group-item-heading
+{
+  margin-left: 13px;
+  color:cadetblue;
+  /* text-decoration-line: overline;
+  text-decoration-line: underline;
+  
+text-decoration-style: dashed;
+text-decoration-color: darkgreen; */
+}

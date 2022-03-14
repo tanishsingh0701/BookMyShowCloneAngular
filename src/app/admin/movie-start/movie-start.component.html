@@ -1,1 +1,21 @@
-<h3>Please select a Movie!</h3>
+
+<div class="col-xs-12" *ngIf="moviesAvailable">
+    <img src="https://bluefrog.co.in/wp-content/uploads/2020/01/BOOKMYSHOW.jpg"
+      class="img-responsive"
+      style="max-height: 300px;">
+  </div>
+
+  <div class="col-xs-12" *ngIf="!moviesAvailable">
+    <img src="https://www.replaylistings.com/assets/images/result-not-found-1.png"
+      class="img-responsive"
+      style="max-height: 300px;">
+  </div>
+
+ 
+<div class="found">
+<h3 *ngIf="moviesAvailable">Please select a Movie!</h3>
+</div>
+
+<div class="notfound">
+<h3 *ngIf="!moviesAvailable">No Movies found with above search</h3>
+</div>

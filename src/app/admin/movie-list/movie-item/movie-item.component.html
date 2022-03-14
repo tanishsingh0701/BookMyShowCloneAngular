@@ -1,21 +1,68 @@
-<div>
+<div id="main_div row" *ngIf="">
 <a
   style="cursor: pointer;"
   [routerLink]="[index]"
   routerLinkActive="active"
   class="list-group-item clearfix">
-  <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ movie.name }}</h4>
-    <p class="list-group-item-text">{{ movie.description }}</p>
+  <div class="pull-left col-xs-7">
+    <h3 class="list-group-item-heading">{{ movie.name }}</h3>
+    <h4 class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Description:</span> {{ movie.description }}.</h4>
+    <h4 class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Genre:</span> {{ movie.genre }}.</h4>
+    <h4 class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Artist:</span> {{ movie.artist }}.</h4>
+    <h4  class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Remaining Seats:</span> {{ movie.unReservedSeats }} only</h4>
   </div>
+  <div class="pull-right col-xs-5" style="margin-top: 15px;">
   <span class="pull-right">
         <img
           [src]="movie.image_url"
           alt="{{ movie.name }}"
           class="img-responsive"
-          style="height: 20vh;width: 15vw;">
+          style="height: 25vh;width: 15vw;">
       </span>
+      </div>
 </a>
 <br>
 </div>
+
+
+<!-- New Design -->
+<div class="container2">
+<mat-card fxFlex="75" style="margin-top: 6vh;">
+  <a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class=" clearfix">
+
+  
+
+
+
+  <div class="img-responsive2" style="margin-top: 2px;">
+    <span class="center">
+          <img
+            [src]="movie.image_url"
+            alt="{{ movie.name }}"
+            class="img-responsive"
+            >
+        </span>
+    </div>
+
+
+  <div class="pull-left" style="margin-top: 8%;">
+    <h2 class="list-group-item-heading">{{ movie.name }}</h2>
+    <h4 class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Description:</span> {{ movie.description }}.</h4>
+    <h4 class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Genre:</span> {{ movie.genre }}.</h4>
+    <h4 class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Artist:</span> {{ movie.artist }}.</h4>
+    <h4  class="list-group-item-Heading" style="color: black;margin-top: 12px;"><span style="background-color: aqua;">Remaining Seats:</span> {{ movie.unReservedSeats }} only</h4>
+  </div>
+  
+
+</a>
+
+</mat-card>
+</div>
+<br>
+
+
 

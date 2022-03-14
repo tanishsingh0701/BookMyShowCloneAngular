@@ -11,8 +11,11 @@ export class Movie {
   public city:string;
   public rating:number;
   public unreserved_seats:number;
+  public unReservedSeats:number;
+  public reservedSeats:number;
   public genre:string;
   public image_url:string;
+  public trailor_url=''
   // public ingredients: Ingredient[];
 
   /**
@@ -25,7 +28,9 @@ export class Movie {
     duration:string,ticket_price,
     city:string,rating:number,
     unreserved_seats:number,
-    genre:string,image_url:string
+    reservedSeats:number,
+    genre:string,image_url:string,
+    trailor_url:string
     
     )
     {
@@ -36,6 +41,11 @@ export class Movie {
       this.description=description;
       this.artist=artist;
       this.language=language;
+      this.trailor_url=trailor_url;
+      this.city=city;
+      this.unreserved_seats=unreserved_seats;
+      this.reservedSeats=reservedSeats;
+      this.unReservedSeats=unreserved_seats;
 
     }
   

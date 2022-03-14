@@ -1,0 +1,16 @@
+
+<div>
+  <h1>Previous Bookings</h1>
+</div>
+<hr>
+<div class="row">
+
+  <div *ngIf="!reservation"><h3>There is no bookings</h3></div>
+  <div class="col-xs-12">
+    <app-movie-book-item
+      *ngFor="let reservations of reservation; let i = index"
+      [reservation]="reservations"
+      [index]="i"></app-movie-book-item>
+  </div>
+</div>
+

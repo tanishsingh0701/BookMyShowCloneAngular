@@ -1,0 +1,80 @@
+.mat-card
+{
+    box-shadow: 4px 4px 12px blueviolet;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 3%;
+    border-top-right-radius: 3%;
+    border-top-left-radius: 3%;
+    
+    
+}
+
+
+
+.heading1
+{
+    text-align: center;
+    text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+             0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+             0 0 40px #A5F1FF;
+
+             font-family: serif;
+             /* text-shadow: 0 1px 0 #999999, 0 2px 0 #888888,
+             0 3px 0 #777777, 0 4px 0 #666666,
+             0 5px 0 #555555, 0 6px 0 #444444,
+             0 7px 0 #333333, 0 8px 7px rgba(0, 0, 0, 0.4),
+             0 9px 10px rgba(0, 0, 0, 0.2); */
+}
+
+.select{
+width: 140px;
+        height: 55px;
+        width: 100px;
+        padding: 4px;
+        border-radius: 4px;
+        box-shadow: 2px 2px 8px #999;
+        background: #eee;
+        border: none;
+        outline: none;
+        margin-left: 20px;
+        display: inline-block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    /* #mySelect1
+    {
+        width: 100px;
+        height: 35px;
+        padding: 4px;
+        margin-left: 20px;
+        border-radius: 4px;
+        box-shadow: 2px 2px 8px #999;
+        background: #eee;
+        border: none;
+        outline: none;
+        scrollbar-arrow-color: black;
+        display: inline-block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    } */
+
+    select.mySelect{
+        background: #20d492;
+        color: #fff;
+        padding: 0 10px;
+        font-size: 17px;
+    }
+    select.mySelect option{
+        color: #000;
+        padding: 0 10px;
+    }
+
+    .full-width
+    {
+        width: 100%;
+    }

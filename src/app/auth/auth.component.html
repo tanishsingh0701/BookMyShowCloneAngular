@@ -1,21 +1,21 @@
-<div class="row">
-  <div class="col-xs-12 col-md-6 col-md-offset-3">
+<div class="row" *ngIf="">
+  <div class="col-xs-12 col-md-6 col-md-offset-3" style="margin-top: 5vh;">
     <div class="alert alert-danger" *ngIf="error">
       <!-- <div class="alert alert-danger"> -->
       <p>{{ error }}</p>
     </div>
-    <div *ngIf="isLoading" style="text-align: center;">
-      <app-loading-spinner hidden></app-loading-spinner>
-    </div>
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+    <!-- <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner ></app-loading-spinner>
+    </div> -->
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
       <div *ngIf="isLoginMode">
       <div class="form-group">
         <label for="email">E-Mail</label>
         <input
           type="email"
           id="email"
-          class="form-control"
           ngModel
+          class="form-control"
           name="email"
           required
           email
@@ -27,6 +27,7 @@
           type="password"
           id="password"
           class="form-control"
+          
           ngModel
           name="password"
           required
@@ -43,8 +44,10 @@
           type="text"
           id="name"
           class="form-control"
+          
           ngModel
           name="name"
+          
           required
         />
       </div>
@@ -55,6 +58,7 @@
           type="email"
           id="email"
           class="form-control"
+          
           ngModel
           name="email"
           required
@@ -66,9 +70,9 @@
       <div class="form-group custom-select" 
       style="width:150px;">
         <label for="email">Role</label>
-        <select>
-          <option value="admin">Admin</option>
-          <option value="users" selected>Users</option>
+        <select id="mySelect" class="mySelect" style="margin-left: 10px;">
+          <option value="Admin">Admin</option>
+          <option value="Users" selected>Users</option>
         </select>
       </div>
 
@@ -78,6 +82,7 @@
           type="password"
           id="password"
           class="form-control"
+          
           ngModel
           name="password"
           required
@@ -103,3 +108,162 @@
     </form>
   </div>
 </div>
+
+
+<!-- material Desing1   -->
+
+<div class="container" fxLayoutAlign="center center" fxFlexFill >
+
+  <div *ngIf="isLoading" style="text-align: center;margin-top: 20%;">
+    <app-loading-spinner ></app-loading-spinner>
+  </div>
+  
+  
+
+
+  <mat-card fxFlex="45" style="margin-top: 6vh;" *ngIf="!isLoading">
+    <mat-card-title class="heading1">{{ isLoginMode ? 'Login' : 'Register' }}</mat-card-title>
+
+
+   <form fxLayoutAlign="stretch" fxLayout="column" style="padding:15px;" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+
+    
+    
+    <div fxLayoutAlign="stretch" fxLayout="column" *ngIf="isLoginMode" >
+    <mat-form-field>
+      <input matInput
+          type="email"
+          id="email"
+          class="form-control"
+          ngModel
+          name="email"
+          placeholder="Email"
+          required
+          email
+        />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          placeholder="Password"
+          required
+          minlength="6"
+        />
+     
+    </mat-form-field>
+  </div>
+
+  <div fxLayoutAlign="stretch" fxLayout="column" *ngIf="!isLoginMode">
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      id="name"
+      class="form-control"
+      ngModel
+      placeholder="Name"
+      name="name"
+      required
+    />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+      class="input"
+         matInput
+          type="email"
+          id="email"
+          class="form-control"
+          placeholder="Email"
+          ngModel
+          name="email"
+          required
+          email
+        />
+     
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label for="email">Role</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="role" required>
+          <mat-option value="Admin">Admin</mat-option>
+          <mat-option value="Users">Users</mat-option>
+        </mat-select>
+     
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+          matInput
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          placeholder="Password"
+          required
+          minlength="6"
+        />
+     
+    </mat-form-field>
+  </div>
+
+ 
+  <div class="row" style="margin-top: 10px;">
+    <div class="container">
+      <mat-error *ngIf="error" style="padding: 10px;">
+      
+          {{ error }}
+       
+      </mat-error>
+    </div>
+  <div class="col" style="text-align: center;">
+
+    <button mat-raised-button
+    color="primary"
+    [ngStyle]="{'color': (!authForm.valid) ? 'black' : 'white'}"
+          type="submit"
+          [disabled]="!authForm.valid"
+        >
+          {{ isLoginMode ? 'Login' : 'Sign Up' }}
+        </button>
+
+      </div>
+
+      
+
+  <div class="col-xs-6" *ngIf="">
+    <button mat-raised-button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+      Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
+    </button>
+    
+  </div>
+
+</div>
+
+
+   </form>
+
+  </mat-card>
+
+</div>
+
+
+<!-- material Desing1  End -->
+
+
+
+
+<!-- material Desing2  -->
+
+
+
+
+
+
+<!-- material Desing2 end  -->

@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { MovieService } from '../movie_admin.service';
+import { UserData } from '../userdata.model';
 
 @Component({
   selector: 'app-movie-edit',
@@ -12,7 +13,9 @@ import { MovieService } from '../movie_admin.service';
 export class MovieEditComponent implements OnInit {
   id: number;
   editMode = false;
-  recipeForm: FormGroup;
+  movieForm: FormGroup;
+  // userData:UserData;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +29,8 @@ export class MovieEditComponent implements OnInit {
       this.editMode = params['id'] != null;
       this.initForm();
     });
+
+    console.log(this.movieService.getUserType());
   }
 
   onSubmit() {
@@ -35,28 +40,31 @@ export class MovieEditComponent implements OnInit {
     //   this.recipeForm.value['imagePath'],
     //   this.recipeForm.value['ingredients']);
     if (this.editMode) {
-      this.movieService.updateMovie(this.id, this.recipeForm.value);
+      // console.log("ID:-"+this.id);
+      this.movieService.updateMovie(this.id, this.movieForm.value);
     } else {
-      this.movieService.addMovie(this.recipeForm.value);
+      console.log("This is returned");
+      console.log(this.movieForm.value);
+      this.movieService.addMovie(this.movieForm.value);
     }
     this.onCancel();
   }
 
-  onAddIngredient() {
-    (<FormArray>this.recipeForm.get('ingredients')).push(
-      new FormGroup({
-        name: new FormControl(null, Validators.required),
-        amount: new FormControl(null, [
-          Validators.required,
-          Validators.pattern(/^[1-9]+[0-9]*$/)
-        ])
-      })
-    );
-  }
+  // onAddIngredient() {
+  //   (<FormArray>this.movieForm.get('ingredients')).push(
+  //     new FormGroup({
+  //       name: new FormControl(null, Validators.required),
+  //       amount: new FormControl(null, [
+  //         Validators.required,
+  //         Validators.pattern(/^[1-9]+[0-9]*$/)
+  //       ])
+  //     })
+  //   );
+  // }
 
-  onDeleteIngredient(index: number) {
-    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
-  }
+  // onDeleteIngredient(index: number) {
+  //   (<FormArray>this.movieForm.get('ingredients')).removeAt(index);
+  // }
 
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
@@ -69,8 +77,8 @@ export class MovieEditComponent implements OnInit {
     let movieImageUrl = '';
     let movieArtist = '';
     let movieGenre = '';
-    let moviePrice = '';
-    let movieTotalSeats = '';
+    let moviePrice :number;
+    let movieTotalSeats :number;
     let movieTrailorUrl = '';
     let movieDuration = '';
     let movieLanguage = '';
@@ -81,9 +89,20 @@ export class MovieEditComponent implements OnInit {
     if (this.editMode) {
       const movieId=this.movieService.getMovieId(this.id);
       const movie = this.movieService.getMovie(this.id);
+      console.log("This is move");
+      console.log(movie);
       movieName = movie.name;
       movieImagePath = movie.image_url;
       movieDescription = movie.description;
+      movieImageUrl = movie.image_url;
+      movieArtist = movie.artist;
+      movieGenre = movie.genre;
+      moviePrice = movie.ticket_price;
+      movieTotalSeats = movie.unReservedSeats;
+      movieTrailorUrl = movie.trailor_url;
+      movieDuration = movie.duration;
+      movieLanguage = movie.language;
+      movieCity = movie.city;
       // if (recipe['ingredients']) {
       //   for (let ingredient of recipe.ingredients) {
       //     recipeIngredients.push(
@@ -99,10 +118,19 @@ export class MovieEditComponent implements OnInit {
       // }
     }
 
-    this.recipeForm = new FormGroup({
+    this.movieForm = new FormGroup({
       name: new FormControl(movieName, Validators.required),
-      imagePath: new FormControl(movieImagePath, Validators.required),
+      image_url: new FormControl(movieImageUrl, Validators.required),
       description: new FormControl(movieDescription, Validators.required),
+      artist: new FormControl(movieArtist, Validators.required),
+      genre: new FormControl(movieGenre, Validators.required),
+      ticket_price: new FormControl(moviePrice, Validators.required),
+      unreserved_seats: new FormControl(movieTotalSeats, Validators.required),
+      trailor_url: new FormControl(movieTrailorUrl),
+      duration: new FormControl(movieDuration, Validators.required),
+      language: new FormControl(movieLanguage, Validators.required),
+      city: new FormControl(movieCity, Validators.required),
+      
       // ingredients: recipeIngredients
     });
   }

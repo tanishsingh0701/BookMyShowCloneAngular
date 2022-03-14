@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="list-group-item-heading">
+    <h1>{{movieName}}</h1>
+  </div>
+  <div class="col-xs-12">
+    <form #bookForm="ngForm" [formGroup]="movieBookForm" (ngSubmit)="onSubmit(bookForm)">
+      
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="qty">Quantity</label>
+            <input
+              type="number"
+              id="qty"
+              ngModel
+              [max]="unReservedSeats"
+              formControlName="qty"
+              class="form-control"
+              >
+              <div >
+              <span *ngIf="movieBookForm.get('qty').hasError('max')" id="quantityInvalid" style="color:red;"> Quantity should not exceed Remaining Seats </span>
+              <span *ngIf="movieBookForm.get('qty').hasError('min')" id="quantityInvalid" style="color:red;"> Quantity should not be less than 1 </span>
+              <span *ngIf="movieBookForm.get('qty').hasError('required') && movieBookForm.get('qty').touched" id="quantityInvalid" style="color:red;"> Quantity should not be empty </span>
+            </div>
+            </div>
+          <!-- <div *ngIf="qty.errors?.min">
+            Minimum required number is 15.
+      </div> 
+      <div *ngIf="num2.errors?.max">
+            Maximum number can be 50.
+      </div>  -->
+      
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              type="text"
+              maxlength="10"
+              id="phone"
+              ngModel
+              formControlName="phone"
+              class="form-control">
+              <div >
+                <span *ngIf="movieBookForm.get('phone').hasError('pattern')" id="quantityInvalid" style="color:red;"> Please enter the valid number </span>
+               
+                <span *ngIf="movieBookForm.get('phone').hasError('required') && movieBookForm.get('phone').touched" id="quantityInvalid" style="color:red;"> Phone number should not be empty </span>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!movieBookForm.valid">Book</button> | 
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+      
+      
+    </form>
+  </div>
+</div>

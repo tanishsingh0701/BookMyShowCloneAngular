@@ -17,12 +17,12 @@ export class MoviesResolverService implements Resolve<Movie[]> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const recipes = this.moviesService.getMovies();
+    const movies = this.moviesService.getMovies();
 
-    if (recipes.length === 0) {
+    if (movies.length === 0) {
       return this.dataStorageService.fetchMovies();
     } else {
-      return recipes;
+      return movies;
     }
   }
 }
